@@ -17,7 +17,7 @@ def moo():
 
     """
     if request.method == 'GET':
-        return cow.say("Moo")
+        return cow.default()
     else:
         text = request.form.get('text')
         channel = request.form.get('channel_id')
