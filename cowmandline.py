@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+"""Script for testing cowsay/slack integration.
+"""
 import settings
 import cow
 
@@ -9,4 +12,3 @@ user = 'mstringer'
 text = 'testing'
 
 print cow.post(text, channel=channel, username=user).text
-
