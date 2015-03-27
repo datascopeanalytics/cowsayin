@@ -4,3 +4,4 @@ jinja2
 Flask
 cowpy
 argparse
+requests
