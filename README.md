@@ -1,0 +1,2 @@
+# cowsayin
+Cowsay/Slack integration
