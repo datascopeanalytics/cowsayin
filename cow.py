@@ -3,7 +3,7 @@
 """
 import json
 
-import cowsay
+from cowpy import cow
 import requests
 
 import settings
@@ -11,7 +11,8 @@ import settings
 
 def say(text):
     """Return some cowsayed text."""
-    return '```%s```\n' % cowsay.cowsay(text)
+    cowacter = cow.Cowacter()
+    return '```%s\n\n```' % cowacter.milk(text)
 
 
 def post(text, url=settings.WEBHOOK_URL, channel=None, username=None):
