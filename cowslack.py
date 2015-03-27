@@ -1,34 +1,22 @@
 import sys
-import json
 
 from flask import Flask
 from flask import request
-import requests
 
 import settings
-import cowsay
+import cow
 
 app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
 def moo():
     if request.method == 'GET':
-        return "Moo.\n"
+        return cow.say("Moo")
     else:
         text = request.form.get('text')
         channel = request.form.get('channel_id')
         user = request.form.get('user_name')
-        requests.post(
-            settings.WEBHOOK_URL,
-            data={
-                'payload': json.dumps({
-                    'channel': channel,
-                    'username': user,
-                    'text': '```%s```\n' % cowsay.cowsay(text),
-                    'icon_emoji': ':cow:',
-                }),
-            },
-        )
+        cow.post(text, channel=channel, username=user)
         return ''
 
 if __name__ == "__main__":
