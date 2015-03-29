@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 """Script for testing cowsay/slack integration.
 """
+import sys
+
 import settings
 import cow
 
@@ -9,6 +11,6 @@ url = settings.WEBHOOK_URL
 
 channel = '@mstringer'
 user = 'mstringer'
-text = 'testing'
+text = sys.argv[1]
 
-print cow.post(text, channel=channel, username=user).text
+print cow.post(text, channel=channel, username=user)
