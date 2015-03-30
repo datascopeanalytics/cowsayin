@@ -1,14 +1,27 @@
 """Main file with Flask app for the cowsay/slack integration.
 
 """
+import sys
+
 from flask import Flask
-from flask import request, render_template
+from flask import request, session, render_template
 
 import settings
 import cow
+import pyga
 
 app = Flask(__name__)
+app.config.from_object('settings')
 
+if app.config['TRACKING']:
+    google_analytics = pyga.FlaskGATracker(
+        app.config['DOMAIN'],
+        app.config['GOOGLE_ANALYTICS'],
+    )
+
+def track(user):
+    if app.config['TRACKING']:
+        google_analytics.track(request, session, user_id=user)
 
 @app.route("/", methods=['GET', 'POST'])
 def moo():
@@ -30,6 +43,9 @@ def moo():
         channel = request.form.get('channel_id')
         user = request.form.get('user_name')
 
+        # track with google analytics
+        track(user)
+
         # if --help is given, have slackbot return a help message (and
         # don't post anything to room)
         if text.strip().startswith('--help'):
@@ -41,4 +57,4 @@ def moo():
             return cow.post(text, channel=channel, username=user)
 
 if __name__ == "__main__":
-    app.run(debug=settings.DEBUG)
+    app.run()
