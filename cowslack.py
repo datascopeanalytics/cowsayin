@@ -18,7 +18,10 @@ def moo():
     """
     # render the moo template for GET request
     if request.method == 'GET':
-        return render_template('moo.html', text=cow.milk_random_cow('Moo.'))
+        return render_template(
+            'moo.html',
+            text=cow.cow.milk_random_cow('Moo.'),
+        )
 
     # do slack stuff on POST request
     else:
