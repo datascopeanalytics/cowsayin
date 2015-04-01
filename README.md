@@ -1,16 +1,9 @@
 # cowsayin'
 
-This is a slack integration for cowsay.
+A slack integration for cowsay. It actually works:
 
-Needs:
 
-`sudo apt-get install libapache2-mod-wsgi`
-`sudo pip install flask`
-`sudo pip install cowpy`
-`sudo pip install requests`
-`sudo pip install argparse`
 
-Put apache configuration file in sites enabled.
+To run a development server, use `pip install -r requirements.txt`. To deploy, use the tips in the  [Flask documentation](http://flask.pocoo.org/docs/0.10/deploying/), or feel free to contact us on twitter [@bjlange](https://twitter.com/bjlange) or [@mstringer](https://twitter.com/mstringer).
 
-run a2ensite to enable site.
-
+Contributions are welcome. Also, if you want to contribute to this, you are probably a pretty awesome person.
