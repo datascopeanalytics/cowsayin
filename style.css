@@ -1,5 +1,5 @@
 #top_jumbo {
-  height: 360px;
+  height: 400px;
   background-image: url(./cows.png);
   background-attachment: fixed;
   background-size: cover;
@@ -7,8 +7,7 @@
   background-repeat: no-repeat;
 }
 #top_jumbo > .container {
-    height: 360px;
-
+  height: 400px;
 }
 
 .short {
@@ -49,4 +48,7 @@ footer {
 }
 iframe {
   margin-top: 15px;
+}
+.col-md-4 img {
+  width: 100%;
 }
